@@ -1,0 +1,18 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.google.guava', name: 'guava', version: '23.0'
+
+    testCompile group: 'org.testng', name: 'testng', version: '6.11'
+    testCompile group: 'org.easymock', name: 'easymock', version: '3.5'
+
+    testCompile group: 'com.google.truth', name: 'truth', version: '0.36'
+    testCompile group: 'com.google.truth.extensions', name: 'truth-java8-extension', version: '0.36'
+}
