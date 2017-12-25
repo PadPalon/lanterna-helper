@@ -1,5 +1,7 @@
 package ch.neukom.lanternahelper;
 
+import java.io.IOException;
+
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.screen.Screen;
@@ -70,6 +72,12 @@ public class LanternaTextWriter {
                 screen.setCharacter(columnCount, rowCount, new TextCharacter(character));
                 columnCount++;
             }
+        }
+
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            throw new IllegalStateException("Printing to lanterna failed");
         }
     }
 }
