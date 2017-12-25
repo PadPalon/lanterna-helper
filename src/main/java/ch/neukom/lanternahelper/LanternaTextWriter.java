@@ -6,7 +6,6 @@ import com.googlecode.lanterna.screen.Screen;
 
 /**
  * this class provied helper methods to write longer text to a {@link Screen}
- * TODO write tests
  */
 public class LanternaTextWriter {
     private final Screen screen;
