@@ -10,7 +10,6 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 
 /**
  * this class reads and monitors input of any {@link InputProvider}
- * TODO write tests
  */
 public class LanternaInputOutput extends Observable {
     private final InputProvider inputProvider;
