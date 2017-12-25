@@ -33,6 +33,7 @@ public class LanternaInputOutput extends Observable {
         do {
             KeyStroke keyStroke = inputProvider.readInput();
             input = keyStroke.getCharacter();
+            setChanged();
             notifyObservers(input);
             switch (input) {
                 case '\b':
