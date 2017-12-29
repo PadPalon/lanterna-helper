@@ -17,7 +17,7 @@ public class LanternaTextWriter {
     }
 
     /**
-     * print some text from a starting point to the edge of the terminal
+     * print some text from a starting point to the edge of the terminal,
      * new lines are respected
      * @param text the text to print
      * @param column the column where you want to start printing
@@ -29,7 +29,7 @@ public class LanternaTextWriter {
     }
 
     /**
-     * print some text from a starting point in a given area
+     * print some text from a starting point in a given area,
      * new lines are respected
      * @param text the text to print
      * @param column the column where you want to start printing

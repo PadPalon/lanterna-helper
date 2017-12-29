@@ -22,16 +22,16 @@ public class LanternaInputOutput extends Observable {
     }
 
     /**
-     * reads the input from the {@link TerminalScreen} until a '\n' is entered
-     * a '\b' is interpreted as a backspace
+     * reads the input from the {@link TerminalScreen} until '\n' is entered,
+     * '\b' is interpreted as a backspace
      *
      * @return the joined string of all entered characters
      */
-    public String readLine() throws IOException {
+    public String readLine() {
         StringBuilder lineBuilder = new StringBuilder();
         char input;
         do {
-            KeyStroke keyStroke = inputProvider.readInput();
+            KeyStroke keyStroke = readInput();
             input = keyStroke.getCharacter();
             setChanged();
             notifyObservers(input);
@@ -48,6 +48,14 @@ public class LanternaInputOutput extends Observable {
             }
         } while(input != '\n');
         return lineBuilder.toString();
+    }
+
+    private KeyStroke readInput() {
+        try {
+            return inputProvider.readInput();
+        } catch (IOException e) {
+            throw new IllegalStateException("Could not read input from Lanterna", e);
+        }
     }
 
     /**
