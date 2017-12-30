@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/PadPalon/lanterna-helper.svg?branch=master)](https://travis-ci.org/PadPalon/lanterna-helper)
+[![codecov](https://codecov.io/gh/PadPalon/lanterna-helper/branch/master/graph/badge.svg)](https://codecov.io/gh/PadPalon/lanterna-helper)
 
 ## Synopsis
 
