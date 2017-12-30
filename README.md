@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/PadPalon/lanterna-helper.svg?branch=master)](https://travis-ci.org/PadPalon/lanterna-helper)
+
 ## Synopsis
 
 A tiny library that helps reading, monitoring and printing input of lanterna consoles.
