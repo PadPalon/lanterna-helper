@@ -18,3 +18,9 @@ dependencies {
     testCompile group: 'com.google.truth', name: 'truth', version: '0.37'
     testCompile group: 'com.google.truth.extensions', name: 'truth-java8-extension', version: '0.37'
 }
+
+test {
+    useTestNG {
+        suites 'src/test/resources/testng.xml'
+    }
+}
