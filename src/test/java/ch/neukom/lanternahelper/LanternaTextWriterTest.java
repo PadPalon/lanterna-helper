@@ -1,16 +1,17 @@
 package ch.neukom.lanternahelper;
 
+import java.io.IOException;
+
 import org.testng.annotations.*;
 
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.screen.Screen;
 
 import static org.easymock.EasyMock.*;
-import static org.testng.Assert.*;
 
 public class LanternaTextWriterTest {
     private IMocksControl mocksControl = createControl();
@@ -19,6 +20,50 @@ public class LanternaTextWriterTest {
     @BeforeMethod
     public void resetMocks() {
         mocksControl.reset();
+    }
+
+    @Test
+    public void testPrintCharacterToColumn() throws Exception {
+        screen.setCharacter(new TerminalPosition(3, 0), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 1), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 2), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 3), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 4), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 5), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 6), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 7), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 8), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 9), asCharacter('I'));
+        screen.setCharacter(new TerminalPosition(3, 10), asCharacter('I'));
+
+        setupWriter().printCharacterToColumn('I', 3);
+    }
+
+    @Test
+    public void testPrintCharacterToRow() throws Exception {
+        screen.setCharacter(new TerminalPosition(0, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(1, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(2, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(3, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(4, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(5, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(6, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(7, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(8, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(9, 5), asCharacter('0'));
+        screen.setCharacter(new TerminalPosition(10, 5), asCharacter('0'));
+
+        setupWriter().printCharacterToRow('0', 5);
+    }
+
+    @Test
+    public void testPrintCharacterToArea() throws Exception {
+        screen.setCharacter(new TerminalPosition(3, 4), asCharacter('-'));
+        screen.setCharacter(new TerminalPosition(3, 5), asCharacter('-'));
+        screen.setCharacter(new TerminalPosition(4, 4), asCharacter('-'));
+        screen.setCharacter(new TerminalPosition(4, 5), asCharacter('-'));
+
+        setupWriter().printCharacterToArea('-', new TerminalPosition(3, 4), new TerminalPosition(4, 5));
     }
 
     @Test
@@ -59,8 +104,9 @@ public class LanternaTextWriterTest {
         mocksControl.verify();
     }
 
-    private LanternaTextWriter setupWriter() {
+    private LanternaTextWriter setupWriter() throws IOException {
         expect(screen.getTerminalSize()).andStubReturn(new TerminalSize(10, 10));
+        screen.refresh();
 
         mocksControl.replay();
         return new LanternaTextWriter(screen);
