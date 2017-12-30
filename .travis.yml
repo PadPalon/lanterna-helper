@@ -1,5 +1,8 @@
 language: java
 
+script:
+ - chmod +x ./gradlew
+
 install:
   - gradle assemble
   - gradle test
