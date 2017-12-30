@@ -52,6 +52,17 @@ public class LanternaInputObserverTest {
         assertThat(observer.isLineEnteredHit()).isTrue();
     }
 
+    @Test
+    public void testNoCallWithoutCharacter() throws Exception {
+        FakeLanternaObserver observer = new FakeLanternaObserver();
+        mocksControl.replay();
+        observer.update(inputOutput, "not a character");
+
+        assertThat(observer.isCharacterEnteredHit()).isFalse();
+        assertThat(observer.isLastCharacterRemovedHit()).isFalse();
+        assertThat(observer.isLineEnteredHit()).isFalse();
+    }
+
     @AfterMethod
     public void verifyMocks() {
         mocksControl.verify();

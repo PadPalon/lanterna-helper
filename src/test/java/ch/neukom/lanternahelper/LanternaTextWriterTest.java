@@ -93,6 +93,11 @@ public class LanternaTextWriterTest {
     }
 
     @Test
+    public void testPrintTextAreaIgnore() throws Exception {
+        setupWriter().printTextArea("\r\r\r", 5, 5, 7, 7);
+    }
+
+    @Test
     public void testPrintTextAreaTooBig() throws Exception {
         screen.setCharacter(9, 9, asCharacter('t'));
 

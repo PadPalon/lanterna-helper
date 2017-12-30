@@ -25,6 +25,7 @@ public class LanternaInputOutputTest {
 
     @Test
     public void testReadLine() throws IOException {
+        expect(inputProvider.readInput()).andReturn(KeyStroke.fromString("\b"));
         expect(inputProvider.readInput()).andReturn(KeyStroke.fromString("h"));
         expect(inputProvider.readInput()).andReturn(KeyStroke.fromString("e"));
         expect(inputProvider.readInput()).andReturn(KeyStroke.fromString("l"));
