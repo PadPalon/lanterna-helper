@@ -1,8 +1,11 @@
 language: java
 
-script:
- - chmod +x ./gradlew
+before_install:
+ - chmod +x gradlew
 
 install:
   - gradle assemble
+
+script:
+  - gradle check
   - gradle test
